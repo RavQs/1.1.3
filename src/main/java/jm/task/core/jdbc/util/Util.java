@@ -5,8 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    // реализуйте настройку соеденения с БД
-    public static Connection getSQLconnection() throws SQLException {
+    public  Connection getSQLConnection() throws SQLException {
         String userName = "Ravv";
         String userPass = "5378144Kor!";
         String connectionURL = "jdbc:mysql://localhost:3306/kata";

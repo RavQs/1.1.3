@@ -25,7 +25,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 "age INT(255))";
 
         try {
-            conn = util.getSQLconnection();
+            conn = util.getSQLConnection();
             statement = conn.createStatement();
             statement.execute(sqlCreate);
         } catch (SQLException e) {
@@ -44,7 +44,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String sqlDrop = "DROP TABLE IF EXISTS users";
 
         try {
-            conn = util.getSQLconnection();
+            conn = util.getSQLConnection();
             statement = conn.createStatement();
             statement.executeUpdate(sqlDrop);
         } catch (SQLException e) {
@@ -63,7 +63,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String sqlSave = "INSERT INTO users(name, lastName, age) VALUES (?,?,?)";
 
         try {
-            conn = util.getSQLconnection();
+            conn = util.getSQLConnection();
             preparedStatement = conn.prepareStatement(sqlSave);
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
@@ -85,7 +85,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String sqlRemove = "delete from users where id = ?";
 
         try {
-            conn = util.getSQLconnection();
+            conn = util.getSQLConnection();
             preparedStatement = conn.prepareStatement(sqlRemove);
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
@@ -109,12 +109,11 @@ public class UserDaoJDBCImpl implements UserDao {
         List<User> userList = new ArrayList<>();
 
         try {
-            conn = util.getSQLconnection();
+            conn = util.getSQLConnection();
             preparedStatement = conn.prepareStatement(sqlSelectAll);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                long id = resultSet.getLong(1);
                 String name = resultSet.getString(2);
                 String lastName = resultSet.getString(3);
                 byte age = resultSet.getByte(4);
@@ -139,7 +138,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String sqlClean = "TRUNCATE TABLE users";
 
         try {
-            conn = util.getSQLconnection();
+            conn = util.getSQLConnection();
             statement = conn.createStatement();
             statement.execute(sqlClean);
         } catch (SQLException e) {
