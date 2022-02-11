@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        /*UserService userService = new UserServiceImpl();
+        UserService userService = new UserServiceImpl();
         userService.dropUsersTable();
         userService.createUsersTable();
 
@@ -37,21 +37,10 @@ public class Main {
             System.out.println(user);
         }
 
-        userService.cleanUsersTable();*/
+        userService.cleanUsersTable();
 
 
-        UserDao userDao = new UserDaoHibernateImpl();
-        userDao.dropUsersTable();
-        userDao.createUsersTable();
 
-        User user1 = new User("Victor", "Kim", (byte) 34);
-        userDao.saveUser(user1.getName(),user1.getLastName(),user1.getAge());
-        System.out.println(user1.getName() + " Добавлен в базу данных");
-
-        List<User> userList = new ArrayList<>(userDao.getAllUsers());
-        for (User user : userList) {
-            System.out.println(user);
-        }
 
 
     }
