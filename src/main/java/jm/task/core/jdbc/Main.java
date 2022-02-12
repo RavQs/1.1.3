@@ -6,6 +6,8 @@ import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.HibernateUtil;
+import jm.task.core.jdbc.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +38,7 @@ public class Main {
         for (User user : userList) {
             System.out.println(user);
         }
-
         userService.cleanUsersTable();
-
-
-
-
 
     }
 }
